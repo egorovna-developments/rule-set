@@ -12,10 +12,6 @@ jobs:
   generate-rule-sets:
     runs-on: ubuntu-latest
     steps:
-      - name: Set timezone to Europe/Moscow
-        uses: szenius/set-timezone@v2.0
-        with:
-          timezoneLinux: "Europe/Moscow"
       - name: Checkout sources
         uses: actions/checkout@v6
       - name: Update subnets
