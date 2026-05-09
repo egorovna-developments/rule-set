@@ -50,3 +50,5 @@ jobs:
           name: Updatable rule sets
           removeArtifacts: true
           tag: updatable-rule-sets
+      - name: Generate readme.md
+        uses: bitflight-devops/github-action-readme-generator@v1
