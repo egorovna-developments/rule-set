@@ -52,3 +52,5 @@ jobs:
           tag: updatable-rule-sets
       - name: Generate readme.md
         uses: bitflight-devops/github-action-readme-generator@v1
+        with:
+          action: "build.yml"
