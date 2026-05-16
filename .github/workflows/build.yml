@@ -31,18 +31,8 @@ jobs:
         run: curl -fsSL https://sing-box.app/install.sh | sh
       - name: Compile domains.srs
         run: sing-box rule-set compile --output domains.srs domains.json
-      - name: Upload domains artifact
-        uses: actions/upload-artifact@v7
-        with:
-         name: domains_srs
-         path: domains.srs
       - name: Compile subnets.srs
         run: sing-box rule-set compile --output subnets.srs subnets.json
-      - name: Upload subnets artifact
-        uses: actions/upload-artifact@v7
-        with:
-         name: subnets_srs
-         path: subnets.srs
       - name: Set up variables
         id: vars
         run: |
