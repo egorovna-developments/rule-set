@@ -39,14 +39,12 @@ jobs:
           sing-box rule-set compile --output subnets.srs subnets.json
           ls -l
       - name: Upload files to Releases
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v3
         with:
-          makeLatest: true
-          allowUpdates: true
-          artifactErrorsFailBuild: true
-          artifacts: ./*.srs
+          make_latest: true
+          files: ./*.srs
           body: |
             - Last build date: `${{steps.vars.outputs.date_now}}`
             - Reference commit: ${{github.sha}}
           name: Updatable rule sets
-          tag: updatable-rule-sets
+          tag_name: updatable-rule-sets
