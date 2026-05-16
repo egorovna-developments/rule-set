@@ -27,18 +27,16 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Update subnets'
-      - name: Install sing-box
-        run: curl -fsSL https://sing-box.app/install.sh | sh
-      - name: Compile domains.srs
-        run: sing-box rule-set compile --output domains.srs domains.json
-      - name: Compile subnets.srs
-        run: sing-box rule-set compile --output subnets.srs subnets.json
-      - name: List files
-        run: ls -la
       - name: Set up variables
         id: vars
         run: |
           echo "date_now=$(date +"%Y-%m-%d %T")" >> "${GITHUB_OUTPUT}"
+      - name: Install sing-box and build srs
+        run: |
+          curl -fsSL https://sing-box.app/install.sh | sh
+          sing-box rule-set compile --output domains.srs domains.json
+          sing-box rule-set compile --output subnets.srs subnets.json
+          ls -l
       - name: Upload files to Releases
         uses: ncipollo/release-action@v1
         with:
